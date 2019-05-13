@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentMultiSkuSingleStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentMultiSkuUnfulfilled"/>
+      <class name="com.bec.api.automation.usecases.account.login.Login"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentMultiSkuMultiStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreNegativeQuantity"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentSingleSingleSkuUnfulfilledNoInventory"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentMultiSkuSingleStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentSingleSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillDcSingleShipmentMultiSkuBothFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillDcSingleShipmentMultiSkuStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillDcSingleShipmentMultiSkuBothPartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreZeroQuantity"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreNegativeQuantity"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentMultiSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.readinglevelprogress.RedingLevelProgressResponseTestData"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentMultiSkuMultiStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentMultiSkuMultiStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentMultiSkuSingleStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentSingleSkuMultiStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentMultiSkuMultiStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreZeroQuantity"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentSingleSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentMultiSkuUnfulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentMultiSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentMultiSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentMultiSkuMultiStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentMultiSkuMultiStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentMultiSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentSingleSingleSkuUnfulfilledNoInventory"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentMultiSkuUnfulfilledNoInventory"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentMultiSkuMultiStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentSingleSkuMultiStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentMultiSkuSingleStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentSingleSkuSingleStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentSingleSkuSingleStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentMultiSkuMultiStorePartiallyFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreSingleShipmentMultiSkuUnfulfilledNoInventory"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentSingleSkuUnfulfilledNoInventory"/>
+      <class name="com.bec.api.automation.usecases.readinglevelhistorydata.ClassReadingHistoryResponseValidation"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.dcmh.FulfillStoreMultiShipmentSingleSkuUnfulfilledNoInventory"/>
+      <class name="com.bec.api.automation.usecases.readinglevelhistorydata.StudentReadingHistoryResponseValidation"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreSingleShipmentSingleSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.fulfilmentunittestcase.regularstore.FulfillStoreMultiShipmentSingleSkuSingleStoreFulfilled"/>
+      <class name="com.bec.api.automation.usecases.readinglevelprogress.ReadingLevelProgressInputDatatest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

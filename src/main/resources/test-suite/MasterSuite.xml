@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="master suite for RLP, RHO and Error Analysis APIS "
+	parallel="true" thread-count="2">
+	<listeners>
+		<listener
+			class-name="com.bec.api.automation.report.ExtentReporterNG" />
+	</listeners>
+	<suite-files>
+
+		<suite-file
+			path="readingHistorydataAPis/readingHistoryapis.xml" />
+		<suite-file
+			path="readinglevelprogressapi/readinglevelprogressapi.xml" />
+		<suite-file path="erroranalysisapis/erroranalysisapis.xml" />
+
+	</suite-files>
+
+</suite>

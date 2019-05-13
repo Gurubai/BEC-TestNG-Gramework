@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RHD API TEST" verbose="1" preserve-order="true">
+	<listeners>
+		<!-- <listener class-name=" " /> <listener class-name=" " /> -->
+	</listeners>
+	<test name="Reading History Data APIs">
+		<classes>
+			<class
+				name="com.bec.api.automation.usecases.readinglevelhistorydata.ClassReadingHistoryResponseValidation" />
+			<class
+				name="com.bec.api.automation.usecases.readinglevelhistorydata.StudentReadingHistoryResponseValidation" />
+			<class
+				name="com.bec.api.automation.usecases.readinglevelhistorydata.ClassReadingHitsoryValidationWithInvaidInputs" />
+			<class
+				name="com.bec.api.automation.usecases.readinglevelhistorydata.StudentReadingHistoryValidationwithInvalidInputs" />
+		</classes>
+	</test>
+</suite>

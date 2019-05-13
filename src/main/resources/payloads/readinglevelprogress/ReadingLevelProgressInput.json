@@ -1,0 +1,31 @@
+{
+ "filters": {
+   "externalFilter": {
+     "assesmentId": 5,
+     "endDate": "01/01/2020",
+     "startDate": "01/01/2018",
+     "studentGrade": "K",
+     "studentId": 1,
+     "teacherId": 4
+   },
+   "internalFilter": {
+     "category": {
+       "fiction": true,
+       "nonfiction": true
+     },
+     "language": {
+       "english": true,
+       "spanish": true
+     },
+     "proficiency": {
+       "frustrational": true,
+       "independent": true,
+       "instructional": true
+     },
+     "type": {
+       "seen": true,
+       "unseen": true
+     }
+   }
+ }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RLP API TEST" verbose="1" preserve-order="true">
+	<listeners>
+		<!-- <listener class-name=" " /> <listener class-name=" " /> -->
+	</listeners>
+	<test name="Reading Level Progress API Testing ">
+		<classes>
+			<class
+				name="com.bec.api.automation.usecases.readinglevelprogress.ReadingLevelProgressInputDatatest"/>
+			<class
+				name="com.bec.api.automation.usecases.readinglevelprogress.RedingLevelProgressResponseTestData"/>
+			<class
+				name="com.bec.api.automation.usecases.readinglevelprogress.ReadingLevelProgressValidationWithInvalidData"/>
+		</classes>
+	</test>
+</suite>
