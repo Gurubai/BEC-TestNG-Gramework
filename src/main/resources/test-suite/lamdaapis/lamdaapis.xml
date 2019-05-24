@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Lamda API TEST" verbose="1" preserve-order="true">
+	<listeners>
+		<!-- <listener class-name=" " /> <listener class-name=" " /> -->
+	</listeners>
+	<test name="Lamda APIs">
+		<classes>
+			<class
+				name="com.bec.api.automation.usecases.lamdaapis.GetDimensionInsertionKey" />
+			<class
+				name="com.bec.api.automation.usecases.lamdaapis.GetSequenceNumberApi" />
+
+		</classes>
+	</test>
+</suite>

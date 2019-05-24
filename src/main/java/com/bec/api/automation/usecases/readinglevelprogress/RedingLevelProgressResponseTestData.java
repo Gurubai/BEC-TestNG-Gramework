@@ -1,11 +1,11 @@
 package com.bec.api.automation.usecases.readinglevelprogress;
 
+import static org.testng.Assert.assertTrue;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONObject;
@@ -26,7 +26,7 @@ import com.jayway.restassured.response.Response;
 @Test
 public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 
-	private static Log logger = LogFactory.getLog(ReadingLevelProgressInputDatatest.class);
+	private static Log logger = LogFactory.getLog(RedingLevelProgressResponseTestData.class);
 
 	static Response responseBody = null;
 
@@ -53,18 +53,26 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 		if (200 == responseBody.statusCode()) {
 			logger.info("Success" + responseBody.asString());
 			Boolean readinglevelaxisvalidation = validatereadinglevelaxisvalues(responseBody);
+			assertTrue(readinglevelaxisvalidation, "readinglevelaxisvalidation have null values");
+
 			logger.info("Validated readinglevelaxis" + readinglevelaxisvalidation);
 			Boolean fluencyvalue = validateFluencyaxis(responseBody);
+			assertTrue(fluencyvalue, "fluencyvalue have null values");
 			logger.info("Validated fluencyvalues" + fluencyvalue);
 			Boolean accuracyvalue = validateaccuracyaxis(responseBody);
+			assertTrue(accuracyvalue, "accuracyvalue have null values");
 			logger.info("Validated accuracyvalues" + accuracyvalue);
 			Boolean daterangeaxisvalue = validatedateRangeaxis(responseBody);
+			assertTrue(daterangeaxisvalue, "daterangeaxisvalue have null values");
 			logger.info("Validated daterangeaxis" + daterangeaxisvalue);
 			Boolean assignmentdata = validateassignmentdata(responseBody);
+			assertTrue(assignmentdata, "assignmentdata have null values");
 			logger.info("Validated assignmentdata" + assignmentdata);
 			Boolean fluencyData = validateFluencydata(responseBody);
 			logger.info("Validated fluencydata" + fluencyData);
+			assertTrue(fluencyData, "fluencyData have null values");
 			Boolean accuracyData = validateAccuracydata(responseBody);
+			assertTrue(accuracyData, "accuracyData have null values");
 			logger.info("Validated fluencydata" + accuracyData);
 
 		} else {
@@ -83,6 +91,8 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 		ArrayList<String> LevelNames = jsonPath.get("responseData.readingLevelAxis.levelName");
 		ArrayList<String> levelbgcolors = jsonPath.get("responseData.readingLevelAxis.levelBgColor");
 		ArrayList<String> levelaxiscolors = jsonPath.get("responseData.readingLevelAxis.levelAxisColor");
+		ArrayList<String> levelHoverColor = jsonPath.get("responseData.readingLevelAxis.levelHoverColor");
+
 		if (!readinglevelaxisdata.isEmpty()) {
 			if (LevelNames.contains(null)) {
 				results.add(false);
@@ -93,6 +103,9 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			}
 
 			if (levelaxiscolors.contains(null)) {
+				results.add(false);
+			}
+			if (levelHoverColor.contains(null)) {
 				results.add(false);
 			}
 
@@ -144,7 +157,7 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			logger.info("There are no date range axis data");
 			return true;
 		}
-		return false;
+		return true;
 
 	}
 
@@ -156,6 +169,8 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 		List<Boolean> results = new ArrayList<Boolean>();
 		JsonPath jsonPath = new JsonPath(responseBody.asString());
 		ArrayList<String> assignments = jsonPath.get("responseData.assignmentDataList");
+		assignments.remove(0);
+		assignments.remove(assignments.size() - 1);
 		if (!assignments.isEmpty()) {
 			ArrayList<String> assignmentdate = jsonPath.get("responseData.assignmentDataList.assignmentDate");
 			ArrayList<String> readinglevel = jsonPath.get("responseData.assignmentDataList.numberLevel");

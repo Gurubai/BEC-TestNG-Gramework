@@ -3,7 +3,8 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="master suite for RLP, RHO and Error Analysis APIS "
+<suite
+	name="master suite for RLP, RHO,Error Analysis and lamda  APIS "
 	parallel="true" thread-count="2">
 	<listeners>
 		<listener
@@ -16,7 +17,7 @@
 		<suite-file
 			path="readinglevelprogressapi/readinglevelprogressapi.xml" />
 		<suite-file path="erroranalysisapis/erroranalysisapis.xml" />
-
+		<suite-file path="lamdaapis/lamdaapis.xml" />
 	</suite-files>
 
 </suite>

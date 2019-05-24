@@ -12,7 +12,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.annotations.Test;
 
-import com.bec.api.automation.usecases.readinglevelprogress.ReadingLevelProgressInputDatatest;
 import com.bec.api.automation.utils.RestAssuredUtil;
 import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
@@ -20,7 +19,7 @@ import com.jayway.restassured.response.Response;
 import junit.framework.Assert;
 
 public class StudentReadingHistoryResponseValidation extends RestAssuredUtil {
-	private static Log logger = LogFactory.getLog(ReadingLevelProgressInputDatatest.class);
+	private static Log logger = LogFactory.getLog(StudentReadingHistoryResponseValidation.class);
 
 	static Response responseBody = null;
 
@@ -62,17 +61,20 @@ public class StudentReadingHistoryResponseValidation extends RestAssuredUtil {
 	public static boolean validatestudentcontenetinApiResponse(Response responseBody) {
 		List<Boolean> results = new ArrayList<Boolean>();
 		JsonPath jsonPath = new JsonPath(responseBody.asString());
-		ArrayList<String> classHistorycontent = jsonPath.get("studentReadingHistoryDataDTO.content");
+		ArrayList<String> classHistorycontent = jsonPath.get("studentReadingHistoryData");
 
 		if (!classHistorycontent.isEmpty()) {
-			ArrayList<String> studentid = jsonPath.get("studentReadingHistoryDataDTO.content.studentId");
-			ArrayList<String> letterlevel = jsonPath.get("studentReadingHistoryDataDTO.content.letterLevel");
-			ArrayList<String> lastpassage = jsonPath.get("studentReadingHistoryDataDTO.content.lastPassage");
-			ArrayList<String> category = jsonPath.get("studentReadingHistoryDataDTO.content.category");
-			ArrayList<String> accuracy = jsonPath.get("studentReadingHistoryDataDTO.content.accuracy");
-			ArrayList<String> proficiency = jsonPath.get("studentReadingHistoryDataDTO.content.proficiency");
-			ArrayList<String> fluency = jsonPath.get("studentReadingHistoryDataDTO.content.fluency");
-			ArrayList<String> assignmentDate = jsonPath.get("studentReadingHistoryDataDTO.content.assignmentDate");
+			ArrayList<String> studentid = jsonPath.get("studentReadingHistoryData.studentId");
+			ArrayList<String> letterlevel = jsonPath.get("studentReadingHistoryData.letterLevel");
+			ArrayList<String> lastpassage = jsonPath.get("studentReadingHistoryData.lastPassage");
+			ArrayList<String> category = jsonPath.get("studentReadingHistoryData.category");
+			ArrayList<String> accuracy = jsonPath.get("studentReadingHistoryData.accuracy");
+			ArrayList<String> proficiency = jsonPath.get("studentReadingHistoryData.proficiency");
+			ArrayList<String> fluency = jsonPath.get("studentReadingHistoryData.fluency");
+			ArrayList<String> assignmentDate = jsonPath.get("studentReadingHistoryData.assignmentDate");
+			String startLevel = jsonPath.get("studentReadingLevel.startingLevel");
+			String targetLevel = jsonPath.get("studentReadingLevel.readingTarget");
+
 			if (studentid.contains(null)) {
 				results.add(false);
 			}
@@ -100,6 +102,13 @@ public class StudentReadingHistoryResponseValidation extends RestAssuredUtil {
 			}
 
 			if (assignmentDate.contains(null)) {
+				results.add(false);
+			}
+			if (startLevel.equals(null)) {
+				results.add(false);
+			}
+
+			if (targetLevel.equals(null)) {
 				results.add(false);
 			}
 

@@ -14,13 +14,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.annotations.Test;
 
-import com.bec.api.automation.usecases.readinglevelprogress.ReadingLevelProgressInputDatatest;
 import com.bec.api.automation.utils.RestAssuredUtil;
 import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
 
 public class ClassReadingHistoryResponseValidation extends RestAssuredUtil {
-	private static Log logger = LogFactory.getLog(ReadingLevelProgressInputDatatest.class);
+	private static Log logger = LogFactory.getLog(ClassReadingHistoryResponseValidation.class);
 
 	static Response responseBody = null;
 

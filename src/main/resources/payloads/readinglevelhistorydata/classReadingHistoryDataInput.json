@@ -1,7 +1,7 @@
 {
 "filters": {
   "externalFilter": {
-    "classId": 2,
+    "classId": 1,
     "endDate": "01/01/2020",
     "startDate": "01/01/2018"
   },

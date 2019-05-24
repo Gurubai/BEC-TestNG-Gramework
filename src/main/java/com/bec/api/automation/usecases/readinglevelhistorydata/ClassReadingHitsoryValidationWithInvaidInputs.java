@@ -4,7 +4,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.io.FileReader;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,9 +12,6 @@ import org.json.simple.parser.JSONParser;
 import org.testng.annotations.Test;
 
 import com.bec.api.automation.utils.RestAssuredUtil;
-import com.google.gson.JsonObject;
-import com.jayway.restassured.mapper.ObjectMapper;
-import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
 
 public class ClassReadingHitsoryValidationWithInvaidInputs extends RestAssuredUtil {

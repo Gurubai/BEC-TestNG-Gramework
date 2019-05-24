@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name=" Error Analysis API TEST" verbose="1" preserve-order="true">
+<suite name=" Error Analysis API TEST" verbose="1"
+	preserve-order="true">
 	<listeners>
 		<!-- <listener class-name=" " /> <listener class-name=" " /> -->
 	</listeners>
@@ -10,6 +11,14 @@
 				name="com.bec.api.automation.usecases.erroranalysis.StudentLevelErrorAnalysisInputDataValidation" />
 			<class
 				name="com.bec.api.automation.usecases.erroranalysis.StudentLevelErrorAnalysisResponseValidation" />
+			<class
+				name="com.bec.api.automation.usecases.erroranalysis.StudentErrorAnalysisPieChartValidation" />
+			<class
+				name="com.bec.api.automation.usecases.erroranalysis.StudentErrorAnalysisAverageCalculationValidation" />
+			<class
+				name="com.bec.api.automation.usecases.erroranalysis.StudentErrorAnalysisValidationwithInvalidInputs" />
+			<class
+				name="com.bec.api.automation.usecases.erroranalysis.StudentMsvAnalysisPiechartValidation" />
 		</classes>
 	</test>
 </suite>
