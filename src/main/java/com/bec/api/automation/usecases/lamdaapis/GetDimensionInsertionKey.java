@@ -34,15 +34,15 @@ public class GetDimensionInsertionKey extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void getDimensionInsertionKeysValidation() throws Throwable {
+	private void validategetDimensionInsertionKeysApiResponse() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/lamdaapis/getDimensionInsertionKey.json"));
 
-		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "getDimensionInsertionKeys");
+		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"getDimensionInsertionKeys");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), getDimensionInsertionKeysAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -64,17 +64,17 @@ public class GetDimensionInsertionKey extends RestAssuredUtil {
 	}
 
 	@Test(priority = 2)
-	private void getDimensionInsertionKeysValidationWithInvaidInput() throws Throwable {
+	private void validateGetDimensionInsertionKeysWithInvaidInput() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/lamdaapis/getDimensionInsertionKey.json"));
-		String value = getRandomValueFromList(inputValues());
-		requestpayloadobject.remove(value);
+		String inputparam = getRandomValueFromList(inputValues());
+		requestpayloadobject.remove(inputparam);
 
-		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "getDimensionInsertionKeys");
+		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"getDimensionInsertionKeys");
 
 		responseBody = postServiceResponse(getDimensionInsertionKeysAPIendpoint, provideAuthenticatedHeaders());
 		if (400 == responseBody.statusCode()) {

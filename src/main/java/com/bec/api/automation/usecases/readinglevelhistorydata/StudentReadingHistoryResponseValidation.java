@@ -32,24 +32,24 @@ public class StudentReadingHistoryResponseValidation extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void validateStudentHistoryResponseValidation() throws Throwable {
+	private void validateStudentHistoryResponseData() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser.parse(new FileReader(
 				"src/main/resources/payloads/readinglevelhistorydata/studentReadingHistoryDataInput.json"));
 
-		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+		String studentReadingHistoryApiEndpoint = RestAssuredUtil
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
-		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
+		responseBody = postServiceResponse(requestpayloadobject.toString(), studentReadingHistoryApiEndpoint,
 				provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
 			logger.info("Success" + responseBody.asString());
 
-			Boolean inpudata = validatestudentcontenetinApiResponse(responseBody);
-			Assert.assertTrue(inpudata);
-			logger.info("Validation done of filters data againest APi response data" + inpudata);
+			Boolean inpudataValidation = validateStudentContentApiResponse(responseBody);
+			Assert.assertTrue(inpudataValidation);
+			logger.info("Validation done of filters data againest APi response data" + inpudataValidation);
 
 		} else {
 			throw new RuntimeException("Failed with HTTP error code : " + responseBody.statusCode());
@@ -58,7 +58,7 @@ public class StudentReadingHistoryResponseValidation extends RestAssuredUtil {
 	}
 
 	/* method to validate content of the students values should not be null */
-	public static boolean validatestudentcontenetinApiResponse(Response responseBody) {
+	public static boolean validateStudentContentApiResponse(Response responseBody) {
 		List<Boolean> results = new ArrayList<Boolean>();
 		JsonPath jsonPath = new JsonPath(responseBody.asString());
 		ArrayList<String> classHistorycontent = jsonPath.get("studentReadingHistoryData");

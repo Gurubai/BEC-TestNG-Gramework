@@ -29,17 +29,17 @@ public class StudentErrorAnalysisPieChartValidation extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void validateStudentLvelerrorAnalysisResponse() throws Throwable {
+	private void validateStudentLvelerrorAnalysisPieChart() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/erroranalysis/studenterroranalysisinputjson.json"));
 
-		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+		String studentLevelErrorAnalysisApiEndpoint = RestAssuredUtil
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
 		// Whenr
-		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
+		responseBody = postServiceResponse(requestpayloadobject.toString(), studentLevelErrorAnalysisApiEndpoint,
 				provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));

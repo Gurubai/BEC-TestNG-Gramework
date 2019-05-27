@@ -2,7 +2,6 @@ package com.bec.api.automation.usecases.lamdaapis;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,13 +31,13 @@ public class GetSequenceNumberApi extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void GetSequenceNumberApiValidation() throws Throwable {
+	private void validateGetSequenceNumberApiResponse() throws Throwable {
 
 		String value = getRandomValueFromList(entityList());
 
-		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "getSequenceNumber");
-		String newapiEndpoint = getDimensionInsertionKeysAPIendpoint.concat("/").concat(value);
+		String getSequenceNumberApiEndpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"getSequenceNumber");
+		String newapiEndpoint = getSequenceNumberApiEndpoint.concat("/").concat(value);
 
 		responseBody = getServiceResponse(newapiEndpoint, provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
@@ -75,10 +74,10 @@ public class GetSequenceNumberApi extends RestAssuredUtil {
 	}
 
 	@Test(priority = 2)
-	private void GetSequenceNumberApiValidationwithInvalidentity() throws Throwable {
+	private void validateGetSequenceNumberApiWithInvalidentity() throws Throwable {
 		String value = getRandomValueFromList(invalidentityList());
-		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "getSequenceNumber");
+		String getDimensionInsertionKeysAPIendpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"getSequenceNumber");
 		String newapiEndpoint = getDimensionInsertionKeysAPIendpoint.concat("/").concat(value);
 
 		responseBody = getServiceResponse(newapiEndpoint, provideAuthenticatedHeaders());

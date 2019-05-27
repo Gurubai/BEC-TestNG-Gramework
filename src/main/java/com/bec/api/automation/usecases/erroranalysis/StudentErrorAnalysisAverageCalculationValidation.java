@@ -37,16 +37,16 @@ public class StudentErrorAnalysisAverageCalculationValidation extends RestAssure
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/erroranalysis/studenterroranalysisinputjson.json"));
-		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+		String seaApiEndpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"studentLevelErrorAnalsysisData");
 		// Whenr
-		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
+		responseBody = postServiceResponse(requestpayloadobject.toString(), seaApiEndpoint,
 				provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));
 			JsonPath jsonPath = new JsonPath(responseBody.asString());
-			Object obje = jsonPath.getJsonObject("responseData.errorAnalysisAverage");
-			if (!obje.toString().isEmpty()) {
+			Object eaAverObject = jsonPath.getJsonObject("responseData.errorAnalysisAverage");
+			if (!eaAverObject.toString().isEmpty()) {
 				int substitutionAverage = jsonPath.get("responseData.errorAnalysisAverage.substitutionAverage");
 				int insertionAverage = jsonPath.get("responseData.errorAnalysisAverage.insertionAverage");
 				int ommissionAverage = jsonPath.get("responseData.errorAnalysisAverage.ommissionAverage");

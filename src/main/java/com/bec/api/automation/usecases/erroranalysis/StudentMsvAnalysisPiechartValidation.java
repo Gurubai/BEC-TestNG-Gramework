@@ -17,7 +17,7 @@ import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
 
 public class StudentMsvAnalysisPiechartValidation extends RestAssuredUtil {
-	private static Log logger = LogFactory.getLog(StudentErrorAnalysisPieChartValidation.class);
+	private static Log logger = LogFactory.getLog(StudentMsvAnalysisPiechartValidation.class);
 
 	static Response responseBody = null;
 
@@ -30,17 +30,17 @@ public class StudentMsvAnalysisPiechartValidation extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void validateStudentLvelerrorAnalysisResponse() throws Throwable {
+	private void validateStudentL() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/erroranalysis/studenterroranalysisinputjson.json"));
 
-		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+		String studentLevelErrorAnlaysisApiEndpoint = RestAssuredUtil
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
 		// Whenr
-		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
+		responseBody = postServiceResponse(requestpayloadobject.toString(), studentLevelErrorAnlaysisApiEndpoint,
 				provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));

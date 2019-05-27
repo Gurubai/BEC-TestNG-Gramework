@@ -41,15 +41,15 @@ public class ReadingLevelProgressInputDatatest extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void validateReadingLevelProgressInputDatawithResponse() throws Throwable {
+	private void validateReadingLevelProgressInputDataInApiResponse() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser.parse(
 				new FileReader("src/main/resources/payloads/readinglevelprogress/ReadingLevelProgressInput.json"));
 
-		String readingLevelProgressDataAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "readingLevelProgressData");
+		String readingLevelProgressDataAPIendpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"readingLevelProgressData");
 
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), readingLevelProgressDataAPIendpoint,

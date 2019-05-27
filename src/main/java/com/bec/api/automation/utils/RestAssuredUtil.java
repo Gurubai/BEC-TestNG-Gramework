@@ -1474,7 +1474,7 @@ public class RestAssuredUtil extends FileUtil implements ITest {
 		return url;
 	}
 
-	public static String generateReadingLevelProgressApiEndpoint(String gateWayPath, String api) throws IOException {
+	public static String generateApiEndPoint(String gateWayPath, String api) throws IOException {
 
 		return gateWayPath + "/orr-reporting-api" + "/api/" + api;
 	}

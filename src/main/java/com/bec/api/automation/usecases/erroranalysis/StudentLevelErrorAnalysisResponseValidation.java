@@ -37,16 +37,16 @@ public class StudentLevelErrorAnalysisResponseValidation extends RestAssuredUtil
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/erroranalysis/studenterroranalysisinputjson.json"));
 
-		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+		String studentErrorAnalysisApiEndpoint = RestAssuredUtil
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
 		// Whenr
-		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
+		responseBody = postServiceResponse(requestpayloadobject.toString(), studentErrorAnalysisApiEndpoint,
 				provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));
 			logger.info("Success" + responseBody.asString());
-			Boolean flag = studentlevelerroranalysisapiresponce(responseBody);
-			assertTrue(flag);
+			Boolean flag = studentLevelErrorAnalysisApiResponce(responseBody);
+			assertTrue(flag, "Validation response failed");
 
 		} else {
 			logger.error(responseBody.body().jsonPath().get("message"));
@@ -57,7 +57,7 @@ public class StudentLevelErrorAnalysisResponseValidation extends RestAssuredUtil
 	}
 
 	/* method to validate content of the students values should not be null */
-	public static boolean studentlevelerroranalysisapiresponce(Response responseBody) {
+	public static boolean studentLevelErrorAnalysisApiResponce(Response responseBody) {
 		List<Boolean> results = new ArrayList<Boolean>();
 		JsonPath jsonPath = new JsonPath(responseBody.asString());
 

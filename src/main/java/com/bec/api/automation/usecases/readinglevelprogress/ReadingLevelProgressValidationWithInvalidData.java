@@ -31,7 +31,7 @@ public class ReadingLevelProgressValidationWithInvalidData extends RestAssuredUt
 	}
 
 	@Test(priority = 1)
-	private static void validateReadingLevelProgressAPiwithoutFilters() throws Throwable {
+	private static void validateReadingLevelProgressApiWithoutFilters() throws Throwable {
 
 		JSONParser inputJsonparser = new JSONParser();
 
@@ -43,7 +43,7 @@ public class ReadingLevelProgressValidationWithInvalidData extends RestAssuredUt
 		efilters.remove(value);
 
 		String readingLevelProgressApiendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "readingLevelProgressData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "readingLevelProgressData");
 		responseBody = postServiceResponse(inputPayloadrequestObject.toString(), readingLevelProgressApiendpoint,
 				provideAuthenticatedHeaders());
 

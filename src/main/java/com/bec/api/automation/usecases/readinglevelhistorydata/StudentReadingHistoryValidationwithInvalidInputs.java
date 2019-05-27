@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.annotations.Test;
@@ -15,7 +17,7 @@ import com.bec.api.automation.utils.RestAssuredUtil;
 import com.jayway.restassured.response.Response;
 
 public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssuredUtil {
-
+	private static Log logger = LogFactory.getLog(StudentReadingHistoryValidationwithInvalidInputs.class);
 	static Response responseBody = null;
 
 	@Test
@@ -27,7 +29,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 1)
-	private void validatestudentreadinghistoryapiresponsewithoutstartdate() throws Throwable {
+	private void validateStudentReadingHistoryApiResponseWithoutStartdate() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -38,7 +40,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.remove("startDate");
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -54,7 +56,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 2)
-	private void getstudentreadinghistoryapiresponsewithoutEndDate() throws Throwable {
+	private void validateStudentReadingHistoryApiResponseWithoutEndDate() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -65,7 +67,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.remove("endDate");
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -82,7 +84,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 3)
-	private void getstudentreadinghistoryapiresponsewithoutstudentGrade() throws Throwable {
+	private void validatesStudentReadingHistoryApiResponseWithoutStudentGrade() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -93,7 +95,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.remove("studentGrade");
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -110,7 +112,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 4)
-	private void getstudentreadinghistoryapiresponsewithoutstudentId() throws Throwable {
+	private void validateStudentReadingHistoryApiResponseWithoutstudentId() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -121,7 +123,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.remove("studentId");
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -138,7 +140,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 5)
-	private void getstudentreadinghistoryapiresponsewithoutteacherId() throws Throwable {
+	private void validateStudentReadingHistoryApiresponseWithoutTeacherId() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -149,7 +151,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.remove("teacherId");
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -166,7 +168,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 6)
-	private void studentreadinghistoryapiresponsewithinvalidTeacherId() throws Throwable {
+	private void validatesStudentReadingHistoryApiResponseWithInvalidTeacherId() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -177,7 +179,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.replace("teacherId", -6);
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
@@ -194,7 +196,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 	}
 
 	@Test(priority = 6)
-	private void studentreadinghistoryapiresponsewithinvalidStudentId() throws Throwable {
+	private void validateStudentReadingHistoryApiResponseWithInvalidStudentId() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
@@ -205,7 +207,7 @@ public class StudentReadingHistoryValidationwithInvalidInputs extends RestAssure
 		efilters.replace("studentId", -6);
 
 		String studentreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());

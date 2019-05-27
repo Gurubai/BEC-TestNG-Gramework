@@ -41,15 +41,15 @@ public class StudentErrorAnalysisValidationwithInvalidInputs extends RestAssured
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser
 				.parse(new FileReader("src/main/resources/payloads/erroranalysis/studenterroranalysisinputjson.json"));
-		String value = getRandomValueFromList(getanyFilter());
+		String inputparam = getRandomValueFromList(getAnyFilter());
 		JSONObject filters = (JSONObject) requestpayloadobject.get("filters");
 		JSONObject efilters = (JSONObject) filters.get("externalFilter");
-		efilters.remove(value);
+		efilters.remove(inputparam);
 
-		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+		String studentLeveleErrorAnalysisApiEndpoint = RestAssuredUtil
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
 		// Whenr
-		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
+		responseBody = postServiceResponse(requestpayloadobject.toString(), studentLeveleErrorAnalysisApiEndpoint,
 				provideAuthenticatedHeaders());
 		if (400 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));
@@ -66,7 +66,7 @@ public class StudentErrorAnalysisValidationwithInvalidInputs extends RestAssured
 
 	}
 
-	private static List<String> getanyFilter() {
+	private static List<String> getAnyFilter() {
 		return Arrays.asList(new String[] { "endDate", "startDate", "studentId", "teacherId" });
 	}
 

@@ -48,7 +48,7 @@ public class Login extends RestAssuredUtil {
                 loginObject.put("password","duckburg");
 
         //String endpoint = RestAssuredUtil.generateAccountApiEndpoint("ServiceApiUrl", "login");
-        String endpoint1 = RestAssuredUtil.generateReadingLevelProgressApiEndpoint("ServiceApiUrl", "readingLevelProgressData");
+        String endpoint1 = RestAssuredUtil.generateApiEndPoint("ServiceApiUrl", "readingLevelProgressData");
       
         //When
        // responseBody = postServiceResponse(loginObject.toString(), endpoint, provideAuthenticatedHeaders());
@@ -96,7 +96,7 @@ public class Login extends RestAssuredUtil {
         loginEntity = objectMapper.readValue(new FileReader("src/main/resources/account/login/login.json"), LoginEntity.class);
 
 
-        String endpoint = RestAssuredUtil.generateReadingLevelProgressApiEndpoint("ServiceApiUrl", "login");
+        String endpoint = RestAssuredUtil.generateApiEndPoint("ServiceApiUrl", "login");
 
         //When
         responseBody = postServiceResponse(loginEntity.toString(), endpoint, provideAuthenticatedHeaders());

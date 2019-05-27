@@ -43,7 +43,7 @@ public class StudentLevelErrorAnalysisInputDataValidation extends RestAssuredUti
 		
 
 		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+				.generateApiEndPoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());

@@ -32,22 +32,22 @@ public class ClassReadingHistoryResponseValidation extends RestAssuredUtil {
 	}
 
 	@Test(priority = 1)
-	private void getReadingLevelProgress() throws Throwable {
+	private void validateClassReadingHistoryApiResponse() throws Throwable {
 
 		JSONParser jsinInputparser = new JSONParser();
 
 		JSONObject requestpayloadobject = (JSONObject) jsinInputparser.parse(new FileReader(
 				"src/main/resources/payloads/readinglevelhistorydata/classReadingHistoryDataInput.json"));
 
-		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil
-				.generateReadingLevelProgressApiEndpoint("DevRPLServiceApiUrl", "classReadingHistoryData");
+		String classlevelreadinghistoryAPIendpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"classReadingHistoryData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), classlevelreadinghistoryAPIendpoint,
 				provideAuthenticatedHeaders());
 		if (200 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));
 			logger.info("Success" + responseBody.asString());
-			boolean flag = validatestudentcontenetinApiResponse(responseBody);
+			boolean flag = validateClasscontentInApiResponse(responseBody);
 			assertTrue(flag);
 		} else {
 			logger.error(responseBody.body().jsonPath().get("message"));
@@ -58,7 +58,7 @@ public class ClassReadingHistoryResponseValidation extends RestAssuredUtil {
 	}
 
 	/* method to validate content of the students values should not be null */
-	public static boolean validatestudentcontenetinApiResponse(Response responseBody) {
+	public static boolean validateClasscontentInApiResponse(Response responseBody) {
 		List<Boolean> results = new ArrayList<Boolean>();
 		JsonPath jsonPath = new JsonPath(responseBody.asString());
 		ArrayList<String> classHistorycontent = jsonPath.get("classReadingHistoryDataDTOS.content");
