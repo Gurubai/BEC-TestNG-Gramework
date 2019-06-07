@@ -1,37 +1,5 @@
 package com.bec.api.automation.utils;
 
-import com.bec.api.automation.core.UseDifferentTestName;
-import com.bec.api.automation.core.UseEncodedURL;
-import com.bec.api.automation.domain.orderinput.OrderInput;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.Predicate;
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.builder.RequestSpecBuilder;
-import com.jayway.restassured.config.DecoderConfig;
-import com.jayway.restassured.config.EncoderConfig;
-import com.jayway.restassured.response.Response;
-import com.jayway.restassured.specification.RequestSpecification;
-
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.text.StrSubstitutor;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import org.springframework.http.*;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestOperations;
-import org.springframework.web.client.RestTemplate;
-import org.testng.ITest;
-import org.testng.ITestContext;
-import org.testng.TestException;
-import org.testng.annotations.BeforeMethod;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -48,8 +16,54 @@ import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TimeZone;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.text.StrSubstitutor;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestOperations;
+import org.springframework.web.client.RestTemplate;
+import org.testng.ITest;
+import org.testng.ITestContext;
+import org.testng.TestException;
+import org.testng.annotations.BeforeMethod;
+
+import com.bec.api.automation.core.UseDifferentTestName;
+import com.bec.api.automation.core.UseEncodedURL;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.Predicate;
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.builder.RequestSpecBuilder;
+import com.jayway.restassured.config.DecoderConfig;
+import com.jayway.restassured.config.EncoderConfig;
+import com.jayway.restassured.response.Response;
+import com.jayway.restassured.specification.RequestSpecification;
 
 /**
  * Created by mkpatil on 20/10/17.
@@ -70,10 +84,10 @@ public class RestAssuredUtil extends FileUtil implements ITest {
 	private static int objectListCount;
 	private static List<String> objectList = new ArrayList<>();
 	private static List<String> urlList = new ArrayList<>();
-	private static Map<String, Object> orderInputValues = new HashMap<String, Object>();
+	
 	protected static JSONParser parser = new JSONParser();
-	private static ObjectMapper objectMapper;
-	private static OrderInput orderInput;
+
+	
 
 	protected static int totalInterval = 300000;
 	protected static int interval = 60000;
@@ -542,7 +556,7 @@ public class RestAssuredUtil extends FileUtil implements ITest {
 			myTestContext.setAttribute("ResponseTime-" + testCaseId, Long.valueOf(endtime - starttime));
 			return response;
 		}
-		
+
 		long starttime = System.currentTimeMillis();
 		Response response = (Response) request.urlEncodingEnabled(urlEncoded.booleanValue())
 				.multiPart(new File(absfilename)).when().post(uri, new Object[0]);
@@ -1347,34 +1361,6 @@ public class RestAssuredUtil extends FileUtil implements ITest {
 
 	}
 
-	public static void fetchFromInutObject() {
-
-		orderInput = new OrderInput();
-
-		try {
-			JSONObject orderInputJsonObj = (JSONObject) parser.parse(new FileReader(
-					"src/main/resources/payloads/fulfilment_unit_test_payload/dcmh/orderpayload/inputorder_1.json"));
-
-			objectMapper = FulFillmentUtils.getObjectMapper();
-			orderInput = objectMapper.readValue(orderInputJsonObj.toString(), OrderInput.class);
-
-			System.out.println(orderInput.toString());
-
-			orderInputValues.put("Brand", (Object) orderInput.getData().getBrand());
-
-			orderInputValues.put("OrderId", (Object) orderInput.getData().getOrderId());
-
-			// catch everything
-			// needs to be completed
-
-		} catch (IOException e) {
-
-		} catch (org.json.simple.parser.ParseException e) {
-			e.printStackTrace();
-		}
-
-	}
-
 	public String getTestName() {
 		return this.testInstanceName;
 	}
@@ -1453,7 +1439,7 @@ public class RestAssuredUtil extends FileUtil implements ITest {
 		}
 	}
 
-	protected static String addQueryStringToUrlString(String url,Map<String, Object> parameters)
+	protected static String addQueryStringToUrlString(String url, Map<String, Object> parameters)
 			throws UnsupportedEncodingException {
 		if (parameters == null) {
 			return url;
@@ -1476,6 +1462,6 @@ public class RestAssuredUtil extends FileUtil implements ITest {
 
 	public static String generateApiEndPoint(String gateWayPath, String api) throws IOException {
 
-		return gateWayPath + "/orr-reporting-api" + "/api/" + api;
+		return gateWayPath + "/orr-reporting-api" + "/api/" + "v1/" + api;
 	}
 }

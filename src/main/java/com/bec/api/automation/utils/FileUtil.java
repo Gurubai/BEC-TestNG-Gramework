@@ -1,6 +1,6 @@
 package com.bec.api.automation.utils;
 
-import com.bec.api.automation.core.CELECTTestNGFramework;
+import com.bec.api.automation.core.BECTestNGFramework;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.*;
 import com.jayway.jsonpath.Configuration;
@@ -70,7 +70,7 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("Duplicates")
 public class FileUtil
-        extends CELECTTestNGFramework {
+        extends BECTestNGFramework {
     private static final String TEST_PREFIX = "testProperty";
     private static final String SYS_PREFIX = "sys";
     private static final String VAR_PREFIX = "var";

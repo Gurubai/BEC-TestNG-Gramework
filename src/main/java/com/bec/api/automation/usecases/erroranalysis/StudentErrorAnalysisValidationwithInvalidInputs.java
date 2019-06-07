@@ -46,17 +46,18 @@ public class StudentErrorAnalysisValidationwithInvalidInputs extends RestAssured
 		JSONObject efilters = (JSONObject) filters.get("externalFilter");
 		efilters.remove(inputparam);
 
-		String studentLeveleErrorAnalysisApiEndpoint = RestAssuredUtil
-				.generateApiEndPoint("DevRPLServiceApiUrl", "studentLevelErrorAnalsysisData");
+		String studentLeveleErrorAnalysisApiEndpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"studentLevelErrorAnalsysisData");
 		// Whenr
 		responseBody = postServiceResponse(requestpayloadobject.toString(), studentLeveleErrorAnalysisApiEndpoint,
 				provideAuthenticatedHeaders());
-		if (400 == responseBody.statusCode()) {
+		if (500 == responseBody.statusCode()) {
 			logger.info(responseBody.body().jsonPath().get("message"));
-			assertEquals(responseBody.jsonPath().getString("message"),
+			assertEquals(responseBody.jsonPath().getString("errorMessage"),
 					"Error in Fetching Data : Mandatory fields should not be null or empty");
 			assertTrue(responseBody.jsonPath().getString("responseData") == null);
 			assertTrue(responseBody.jsonPath().getBoolean("SUCCESSFULL") == false);
+			
 
 		} else {
 			logger.error(responseBody.body().jsonPath().get("message"));

@@ -45,8 +45,8 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 		JSONObject inputPayloadrequestObject = (JSONObject) inputJsonparser.parse(
 				new FileReader("src/main/resources/payloads/readinglevelprogress/ReadingLevelProgressInput.json"));
 
-		String readingLevelProgressApiendpoint = RestAssuredUtil
-				.generateApiEndPoint("DevRPLServiceApiUrl", "readingLevelProgressData");
+		String readingLevelProgressApiendpoint = RestAssuredUtil.generateApiEndPoint("DevRPLServiceApiUrl",
+				"readingLevelProgressData");
 		responseBody = postServiceResponse(inputPayloadrequestObject.toString(), readingLevelProgressApiendpoint,
 				provideAuthenticatedHeaders());
 
@@ -169,18 +169,14 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 		List<Boolean> results = new ArrayList<Boolean>();
 		JsonPath jsonPath = new JsonPath(responseBody.asString());
 		ArrayList<String> assignments = jsonPath.get("responseData.assignmentDataList");
-		assignments.remove(0);
-		assignments.remove(assignments.size() - 1);
 		if (!assignments.isEmpty()) {
 			ArrayList<String> assignmentdate = jsonPath.get("responseData.assignmentDataList.assignmentDate");
-			ArrayList<String> readinglevel = jsonPath.get("responseData.assignmentDataList.numberLevel");
+			ArrayList<String> readinglevel = jsonPath.get("responseData.assignmentDataList.letterLevel");
 			ArrayList<String> fluency = jsonPath.get("responseData.assignmentDataList.fluency");
 			ArrayList<String> accuracy = jsonPath.get("responseData.assignmentDataList.accuracy");
 			ArrayList<String> proficiency = jsonPath.get("responseData.assignmentDataList.proficiency");
-			ArrayList<String> assignmentvalue = jsonPath.get("responseData.assignmentDataList.letterLevel");
+			ArrayList<String> assignmentTitle = jsonPath.get("responseData.assignmentDataList.assignmentTitle");
 			ArrayList<String> bubblecolor = jsonPath.get("responseData.assignmentDataList.bubbleColour");
-			ArrayList<String> startlevel = jsonPath.get("responseData.assignmentDataList.startLevel");
-			ArrayList<String> endlevel = jsonPath.get("responseData.assignmentDataList.targetLevel");
 
 			if (assignmentdate.contains(null)) {
 				results.add(false);
@@ -200,13 +196,8 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			if (bubblecolor.contains(null)) {
 				results.add(false);
 			}
-			if (startlevel.contains(null)) {
-				results.add(false);
-			}
-			if (endlevel.contains(null)) {
-				results.add(false);
-			}
-			if (assignmentvalue.contains(null)) {
+
+			if (assignmentTitle.contains(null)) {
 				results.add(false);
 			}
 			return results.contains(false) ? false : true;
@@ -231,9 +222,7 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			ArrayList<String> readinglevel = jsonPath.get("responseData.fluencyDataList.letterLevel");
 			ArrayList<String> fluency = jsonPath.get("responseData.fluencyDataList.fluency");
 			ArrayList<String> color = jsonPath.get("responseData.fluencyDataList.colour");
-			ArrayList<String> startlevel = jsonPath.get("responseData.fluencyDataList.startLevel");
-			ArrayList<String> endlevel = jsonPath.get("responseData.fluencyDataList.targetLevel");
-
+			
 			if (date.contains(null)) {
 				results.add(false);
 			}
@@ -246,12 +235,7 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			if (color.contains(null)) {
 				results.add(false);
 			}
-			if (startlevel.contains(null)) {
-				results.add(false);
-			}
-			if (endlevel.contains(null)) {
-				results.add(false);
-			}
+			
 			return results.contains(false) ? false : true;
 		}
 
@@ -274,8 +258,7 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			ArrayList<String> readinglevel = jsonPath.get("responseData.accuracyDataList.letterLevel");
 			ArrayList<String> accuracy = jsonPath.get("responseData.accuracyDataList.accuracy");
 			ArrayList<String> color = jsonPath.get("responseData.accuracyDataList.colour");
-			ArrayList<String> startlevel = jsonPath.get("responseData.accuracyDataList.startLevel");
-			ArrayList<String> endlevel = jsonPath.get("responseData.accuracyDataList.targetLevel");
+			
 
 			if (date.contains(null)) {
 				results.add(false);
@@ -289,12 +272,7 @@ public class RedingLevelProgressResponseTestData extends RestAssuredUtil {
 			if (color.contains(null)) {
 				results.add(false);
 			}
-			if (startlevel.contains(null)) {
-				results.add(false);
-			}
-			if (endlevel.contains(null)) {
-				results.add(false);
-			}
+			
 			return results.contains(false) ? false : true;
 		}
 

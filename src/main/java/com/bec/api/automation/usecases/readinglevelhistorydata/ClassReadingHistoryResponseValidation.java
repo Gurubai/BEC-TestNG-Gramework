@@ -75,33 +75,27 @@ public class ClassReadingHistoryResponseValidation extends RestAssuredUtil {
 			if (studentid.contains(null)) {
 				results.add(false);
 			}
-
 			if (letterlevel.contains(null)) {
 				results.add(false);
 			}
-
 			if (lastpassage.contains(null)) {
 				results.add(false);
 			}
 			if (category.contains(null)) {
 				results.add(false);
 			}
-
 			if (accuracy.contains(null)) {
 				results.add(false);
 			}
-
 			if (proficiency.contains(null)) {
 				results.add(false);
 			}
 			if (fluency.contains(null)) {
 				results.add(false);
 			}
-
 			if (assignmentDate.contains(null)) {
 				results.add(false);
 			}
-
 			return results.contains(false) ? false : true;
 		}
 

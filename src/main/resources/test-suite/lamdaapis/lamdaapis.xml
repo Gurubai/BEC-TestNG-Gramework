@@ -10,6 +10,12 @@
 				name="com.bec.api.automation.usecases.lamdaapis.GetDimensionInsertionKey" />
 			<class
 				name="com.bec.api.automation.usecases.lamdaapis.GetSequenceNumberApi" />
+				<class
+				name="com.bec.api.automation.usecases.lamdaapis.GetDimAssismentTestKey" />
+				<class
+				name="com.bec.api.automation.usecases.lamdaapis.GetDimreadingLevelKey" />
+				<class
+				name="com.bec.api.automation.usecases.lamdaapis.GetDimTestInstanceKey" />
 
 		</classes>
 	</test>

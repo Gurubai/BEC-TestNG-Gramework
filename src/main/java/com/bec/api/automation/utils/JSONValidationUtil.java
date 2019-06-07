@@ -1,6 +1,6 @@
 package com.bec.api.automation.utils;
 
-import com.bec.api.automation.core.CELECTTestNGFramework;
+import com.bec.api.automation.core.BECTestNGFramework;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
@@ -72,7 +72,7 @@ public class JSONValidationUtil
         if (!report.isSuccess()) {
             LOGGER.info("\nJSON validation falied --> " + report.toString() + "\n");
             Exception e = new Exception(report.toString());
-            CELECTTestNGFramework.addVerificationFailure(e);
+            BECTestNGFramework.addVerificationFailure(e);
         } else {
             LOGGER.info("\nJSON validation succeed --> " + report.toString() + "\n");
         }
